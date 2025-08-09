@@ -66,7 +66,7 @@ const Login = ({ setIsDash, users }) => {
                 SignUp
               </button>
             </Link>
-            <Admin_btn role={role} setRole={setRole}/>
+            <Admin_btn role={role} setRole={setRole} className/>
           </div>
 
           <form className="space-y-5" onSubmit={handleSubmit}>

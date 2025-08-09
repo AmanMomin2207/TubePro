@@ -12,7 +12,7 @@ const TubeProDescription0 = ({ setIsDash }) => {
   }, [location.pathname, setIsDash]);
   return (
     <div>
-      <div className="p-26">
+      <div className="lg:p-26 pt-20 ">
         <div className=" bg-white flex flex-col md:flex-row items-center justify-around px-6 md:px-16 py-16 overflow-hidden">
           {/* Left text content */}
           <div className="max-w-md z-10">

@@ -52,7 +52,7 @@ export default function SignUp({ setIsDash, users, addusers }) {
   };
   return (
     <>
-      <div className="min-h-screen flex items-center justify-center bg-white font-sans">
+      <div className="min-h-screen flex items-center justify-center bg-white font-sans pt-10 lg:pt-0">
         <div className="w-full max-w-5xl flex bg-white rounded-xl shadow-lg overflow-hidden">
           {/* Left side - Login Form */}
           <div className=" w-full lg:w-1/2 p-10">

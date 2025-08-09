@@ -10,7 +10,7 @@ const Services = ({ setIsDash }) => {
   }, [location.pathname, setIsDash]);
 
   return (
-    <div className="p-26">
+    <div className="lg:p-26 pt-20 ">
       <section id="Our Services" className="px-8 py-10">
         <h2 className="text-5xl font-bold text-blue-900 mb-8">Our Services</h2>
 

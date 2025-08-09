@@ -31,7 +31,7 @@ const Setting = ({ setIsDash }) => {
 
       {/* Company Settings */}
       <div className="bg-white p-6 rounded-2xl shadow-md space-y-4">
-        <h2 className="text-xl font-semibold">Company Settings (Orbot)</h2>
+        <h2 className="text-xl font-semibold">Company Settings (Orobot)</h2>
         <input
           type="text"
           placeholder="Company Name"

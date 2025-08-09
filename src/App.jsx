@@ -60,7 +60,7 @@ function App() {
       : [
           {
             id: 0,
-            first_name: "Aman",
+            first_name: "Muddassir",
             last_name: "Momin",
             email: "momin@gmail.com",
             password: "123",

@@ -13,7 +13,7 @@ const Admin_btn = ({ role, setRole }) => {
   };
   return (
     <>
-      <div className="relative flex items-center pl-20">
+      <div className="relative flex items-center lg:pl-20 ">
         <select
           value={role}
           onChange={handleChange}
@@ -24,7 +24,7 @@ const Admin_btn = ({ role, setRole }) => {
         </select>
 
         {/* Left Icon */}
-        <div className="absolute left-23 top-1/2 transform -translate-y-1/2 pointer-events-none">
+        <div className="absolute left-3 lg:left-23 top-1/2 transform -translate-y-1/2 pointer-events-none">
           <UserCircle size={18} className="text-blue-900" />
         </div>
 

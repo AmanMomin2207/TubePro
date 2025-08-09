@@ -10,7 +10,7 @@ const Contact = ({ setIsDash }) => {
   }, [location.pathname, setIsDash]);
 
   return (
-    <div className="p-16">
+    <div className="lg:p-16 pt-20">
       <div className="bg-white flex flex-col md:flex-row items-center justify-around px-6 md:px-20 py-16 overflow-hidden">
         {/* Left Form */}
         <div className="max-w-md w-full space-y-4 z-10">
