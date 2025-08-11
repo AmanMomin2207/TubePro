@@ -113,7 +113,7 @@ const User_page = ({ setIsDash }) => {
             id="edit-form"
             className="inset-0 fixed bg-sky-200 flex justify-center items-center "
           >
-            <div className="bg-white shadow-2xl p-10 rounded-4xl w-1/3">
+            <div className="bg-white shadow-2xl p-10 rounded-4xl lg:w-1/3 w-full">
               <div className="flex items-center justify-between">
                 <h1 className="text-2xl text-black font-bold mb-5">
                   Edit User Info.{" "}

@@ -152,13 +152,13 @@ const Analytics = ({ setIsDash }) => {
               Analytics Overview
             </h3>
             <div className="space-y-4">
-              <div className="w-full h-3 bg-white rounded-full overflow-hidden">
+              <div className="w-full h-3 bg-white rounded-full ">
                 <div className="bg-[#0d6efd] h-full w-[90%] rounded-full"></div>
               </div>
-              <div className="w-full h-3 bg-white rounded-full overflow-hidden">
+              <div className="w-full h-3 bg-white rounded-full">
                 <div className="bg-[#0d6efd] h-full w-[70%] rounded-full"></div>
               </div>
-              <div className="w-full h-3 bg-white rounded-full overflow-hidden">
+              <div className="w-full h-3 bg-white rounded-full ">
                 <div className="bg-[#0d6efd] h-full w-[50%] rounded-full"></div>
               </div>
             </div>

@@ -91,7 +91,7 @@ const MaintenanceSchedule = ({ setIsDash }) => {
       </aside>
 
       {/* Main */}
-      <main className="flex-1 p-6 overflow-auto">
+      <main className="flex-1 p-6 ">
         {/* Top Section */}
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-3xl font-bold text-sky-800">

@@ -37,7 +37,7 @@ const CleaningHistory = ({ setIsDash }) => {
 
   return (
     <>
-      <div className="flex h-screen font-sans bg-sky-50">
+      <div className="flex min-h-screen font-sans bg-sky-50">
         {/* Sidebar */}
         <aside className="w-64 bg-sky-600 text-white p-4 flex flex-col justify-between">
           <div>
@@ -92,7 +92,7 @@ const CleaningHistory = ({ setIsDash }) => {
         </aside>
 
         {/* Main Content */}
-        <main className="flex-1 p-6 overflow-auto">
+        <main className="flex-1 p-6 ">
           <div className="flex justify-between items-center mb-4">
             <h1 className="text-2xl font-bold text-sky-800">
               Cleaning History
