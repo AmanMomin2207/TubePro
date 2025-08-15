@@ -190,7 +190,7 @@ const Dashboard = ({ setIsDash }) => {
               </div>
             </div>
             <div className="block lg:flex items-center space-x-4">
-              <div className="relative pb-2 w-3/4 lg:w-full">
+              <div className="relative pb-2 lg:w-full">
                 <input
                   type="text"
                   placeholder="Search"
@@ -223,7 +223,7 @@ const Dashboard = ({ setIsDash }) => {
           {/* Graphs and Alerts */}
           <div className="grid lg:grid-cols-3 gap-4">
             {/* Tube Cleaning Activity */}
-            <div className="col-span-2 bg-white p-4 rounded-xl shadow w-3/4 lg:w-full">
+            <div className="col-span-2 bg-white p-4 rounded-xl shadow lg:w-full">
               <h2 className="font-semibold text-lg text-sky-700 mb-2">
                 Tube Cleaning Activity
               </h2>
@@ -234,7 +234,7 @@ const Dashboard = ({ setIsDash }) => {
             </div>
 
             {/* Alerts */}
-            <div className="bg-white p-4 rounded-xl shadow w-3/4 lg:w-full">
+            <div className="bg-white p-4 rounded-xl shadow lg:w-full">
               <h2 className="font-semibold text-lg text-sky-700 mb-2">
                 Recent Alerts
               </h2>
@@ -246,7 +246,7 @@ const Dashboard = ({ setIsDash }) => {
           </div>
 
           {/* Analytics Overview */}
-          <div className="mt-6 bg-white p-4 rounded-xl shadow w-3/4 lg:w-full">
+          <div className="mt-6 bg-white p-4 rounded-xl shadow lg:w-full">
             <h2 className="font-semibold text-lg text-sky-700 mb-2">
               Analytics Overview
             </h2>
@@ -276,7 +276,7 @@ const NavItem = ({ icon, label, active }) => (
 
 // Stat Card Component
 const StatCard = ({ title, value, percent }) => (
-  <div className="bg-white rounded-xl shadow p-4 w-3/4 lg:w-full">
+  <div className="bg-white rounded-xl shadow p-4 lg:w-full">
     <div className="text-sm text-gray-600">{title}</div>
     <div className="text-3xl font-bold text-sky-700">{value}</div>
     <div className="text-green-500 text-sm">{percent}</div>
