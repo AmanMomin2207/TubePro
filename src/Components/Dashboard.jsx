@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { UserContext } from "../Context/context.jsx";
 import {
   FaBell,
@@ -12,6 +12,7 @@ import {
   FaExclamationTriangle,
   FaBars,
 } from "react-icons/fa";
+import { CircleArrowRight } from "lucide-react";
 import userImage from "../assets/User.png";
 import { useLocation, Link } from "react-router-dom";
 
@@ -23,12 +24,20 @@ const Dashboard = ({ setIsDash }) => {
   useEffect(() => {
     setIsDash(!hideNavbar);
   }, [location.pathname, setIsDash]);
+  const [isOpen, setIsOpen] = useState(false);
+  const handleClick = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
     <>
       <div className="min-h-screen flex font-sans bg-sky-50">
         {/* Sidebar */}
-        <aside className="w-64 bg-sky-600 text-white flex flex-col justify-between p-4">
+        <aside
+          className={
+            "lg:flex hidden w-64 bg-sky-600 text-white flex-col justify-between p-4"
+          }
+        >
           <div>
             <div className="flex flex-col items-center mb-6">
               <img
@@ -80,19 +89,112 @@ const Dashboard = ({ setIsDash }) => {
           </div>
         </aside>
 
+        <div
+          id="mobileMenu"
+          className={`fixed top-0 ${
+            isOpen ? "left-0" : "-left-full"
+          } w-3/5 h-full bg-white z-40 shadow-lg transition-all duration-300 lg:hidden`}
+        >
+          <ul className="flex flex-col p-6 gap-6 text-gray-600 uppercase mt-20">
+            <li>
+              <Link
+                to="/Dashboard"
+                className="hover:text-fuchsia-600 pb-4"
+                onClick={handleClick}
+              >
+                <CircleArrowRight
+                  className="lg:hidden left-6"
+                  onClick={handleClick}
+                />
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/Dashboard"
+                className="hover:text-fuchsia-600"
+                onClick={handleClick}
+              >
+                DashBoard
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/Dashboard/History"
+                className="hover:text-fuchsia-600"
+                onClick={handleClick}
+              >
+                History
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/Dashboard/Maintenance"
+                className="hover:text-fuchsia-600"
+                onClick={handleClick}
+              >
+                Maintenance Schedule
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/Dashboard/Alerts"
+                className="hover:text-fuchsia-600"
+                onClick={handleClick}
+              >
+                Alerts
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/Dashboard/Analytics"
+                className="hover:text-fuchsia-600"
+                onClick={handleClick}
+              >
+                Analytics
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/Dashboard/User"
+                className="hover:text-fuchsia-600"
+                onClick={handleClick}
+              >
+                User
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/Dashboard/Setting"
+                className="hover:text-fuchsia-600"
+                onClick={handleClick}
+              >
+                Setting
+              </Link>
+            </li>
+          </ul>
+        </div>
+
         {/* Main Dashboard */}
-        <main className="flex-1 p-6">
+        <main className="flex-1 p-6 lg:w-full ">
           {/* Header */}
-          <div className="flex justify-between items-center mb-6">
-            <h1 className="text-2xl font-bold text-sky-700">
-              Welcome {user?.first_name || "Not logged in"}!
-            </h1>
-            <div className="flex items-center space-x-4">
-              <div className="relative">
+          <div className="block lg:flex justify-between items-center mb-6 lg:w-full">
+            <div className="flex justify-between items-center w-full">
+              <div className="flex justify-between items-center gap-2">
+                <CircleArrowRight
+                  className="lg:hidden left-6"
+                  onClick={handleClick}
+                />
+                <h1 className="text-2xl font-bold text-sky-700 py-2 px-0 lg:p-0 flex items-center">
+                  Welcome {user?.first_name || "Not logged in"}!
+                </h1>
+              </div>
+            </div>
+            <div className="block lg:flex items-center space-x-4">
+              <div className="relative pb-2 w-3/4 lg:w-full">
                 <input
                   type="text"
                   placeholder="Search"
-                  className="pl-10 pr-4 py-2 rounded-full bg-white shadow outline-none border border-gray-200"
+                  className="pl-10 pr-4 py-2 rounded-full bg-white shadow outline-none border border-gray-200 "
                 />
                 <FaSearch className="absolute left-3 top-2.5 text-gray-400" />
               </div>
@@ -108,7 +210,7 @@ const Dashboard = ({ setIsDash }) => {
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-4 mb-6">
+          <div className="grid lg:grid-cols-3 gap-4 mb-6">
             <StatCard title="Total Tubes Cleaned" value="1257" percent="+12%" />
             <StatCard title="Maintenance Completed" value="120" percent="+5%" />
             <StatCard
@@ -119,9 +221,9 @@ const Dashboard = ({ setIsDash }) => {
           </div>
 
           {/* Graphs and Alerts */}
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid lg:grid-cols-3 gap-4">
             {/* Tube Cleaning Activity */}
-            <div className="col-span-2 bg-white p-4 rounded-xl shadow">
+            <div className="col-span-2 bg-white p-4 rounded-xl shadow w-3/4 lg:w-full">
               <h2 className="font-semibold text-lg text-sky-700 mb-2">
                 Tube Cleaning Activity
               </h2>
@@ -132,7 +234,7 @@ const Dashboard = ({ setIsDash }) => {
             </div>
 
             {/* Alerts */}
-            <div className="bg-white p-4 rounded-xl shadow">
+            <div className="bg-white p-4 rounded-xl shadow w-3/4 lg:w-full">
               <h2 className="font-semibold text-lg text-sky-700 mb-2">
                 Recent Alerts
               </h2>
@@ -144,7 +246,7 @@ const Dashboard = ({ setIsDash }) => {
           </div>
 
           {/* Analytics Overview */}
-          <div className="mt-6 bg-white p-4 rounded-xl shadow w-full">
+          <div className="mt-6 bg-white p-4 rounded-xl shadow w-3/4 lg:w-full">
             <h2 className="font-semibold text-lg text-sky-700 mb-2">
               Analytics Overview
             </h2>
@@ -156,10 +258,6 @@ const Dashboard = ({ setIsDash }) => {
           </div>
         </main>
       </div>
-      {/* <CleaningHistory/>
-      <MaintenanceSchedule/>
-      <Alerts/>
-      <Analytics/> */}
     </>
   );
 };
@@ -178,7 +276,7 @@ const NavItem = ({ icon, label, active }) => (
 
 // Stat Card Component
 const StatCard = ({ title, value, percent }) => (
-  <div className="bg-white rounded-xl shadow p-4">
+  <div className="bg-white rounded-xl shadow p-4 w-3/4 lg:w-full">
     <div className="text-sm text-gray-600">{title}</div>
     <div className="text-3xl font-bold text-sky-700">{value}</div>
     <div className="text-green-500 text-sm">{percent}</div>

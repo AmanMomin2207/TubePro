@@ -1,7 +1,8 @@
-import React, { useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { UserContext } from "../Context/context.jsx";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import { CircleArrowRight } from "lucide-react";
 import {
   FaBell,
   FaCog,
@@ -33,10 +34,15 @@ export default function Alerts({ setIsDash }) {
     setIsDash(!hideNavbar);
   }, [location.pathname, setIsDash]);
 
+  const [isOpen, setIsOpen] = useState(false);
+  const handleClick = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <div className="flex h-screen bg-gray-100">
       {/* Sidebar */}
-      <aside className="w-64 bg-sky-600 text-white flex flex-col justify-between p-4">
+      <aside className="hidden lg:flex w-64 bg-sky-600 text-white flex-col justify-between p-4">
         <div>
           <div className="flex flex-col items-center mb-6">
             <img
@@ -85,9 +91,100 @@ export default function Alerts({ setIsDash }) {
         </div>
       </aside>
 
+      <div
+        id="mobileMenu"
+        className={`fixed top-0 ${
+          isOpen ? "left-0" : "-left-full"
+        } w-3/5 h-full bg-white z-40 shadow-lg transition-all duration-300 lg:hidden`}
+      >
+        <ul className="flex flex-col p-6 gap-6 text-gray-600 uppercase mt-20">
+          <li>
+            <Link
+              to="/Dashboard/Alerts"
+              className="hover:text-fuchsia-600 pb-4"
+              onClick={handleClick}
+            >
+              <CircleArrowRight
+                className="lg:hidden left-6"
+                onClick={handleClick}
+              />
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/Dashboard"
+              className="hover:text-fuchsia-600"
+              onClick={handleClick}
+            >
+              DashBoard
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/Dashboard/History"
+              className="hover:text-fuchsia-600"
+              onClick={handleClick}
+            >
+              History
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/Dashboard/Maintenance"
+              className="hover:text-fuchsia-600"
+              onClick={handleClick}
+            >
+              Maintenance Schedule
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/Dashboard/Alerts"
+              className="hover:text-fuchsia-600"
+              onClick={handleClick}
+            >
+              Alerts
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/Dashboard/Analytics"
+              className="hover:text-fuchsia-600"
+              onClick={handleClick}
+            >
+              Analytics
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/Dashboard/User"
+              className="hover:text-fuchsia-600"
+              onClick={handleClick}
+            >
+              User
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/Dashboard/Setting"
+              className="hover:text-fuchsia-600"
+              onClick={handleClick}
+            >
+              Setting
+            </Link>
+          </li>
+        </ul>
+      </div>
+
       {/* Main Content */}
       <div className="flex-1 p-6">
-        <h1 className="text-2xl font-bold text-blue-900 mb-4">Alters</h1>
+        <div className="flex items-center justify-start gap-3 mb-4">
+          <CircleArrowRight
+            className="lg:hidden left-6"
+            onClick={handleClick}
+          />
+          <h1 className="text-2xl font-bold text-blue-900 ">Alters</h1>
+        </div>
 
         {/* Filter Buttons */}
         <div className="flex gap-4 mb-4">

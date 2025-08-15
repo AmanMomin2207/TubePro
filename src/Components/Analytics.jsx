@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { UserContext } from "../Context/context.jsx";
 import {
   LineChart,
@@ -9,6 +9,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import { CircleArrowRight } from "lucide-react";
 import userImage from "../assets/User.png";
 import { useLocation } from "react-router-dom";
 import {
@@ -42,11 +43,16 @@ const Analytics = ({ setIsDash }) => {
     { name: "Jun", value: 200 },
   ];
 
+  const [isOpen, setIsOpen] = useState(false);
+  const handleClick = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <>
       <div className="min-h-screen flex font-sans bg-sky-50 ">
         {/* Sidebar */}
-        <aside className="w-64 bg-sky-600 text-white flex flex-col justify-between p-4">
+        <aside className="hidden lg:flex w-64 bg-sky-600 text-white flex-col justify-between p-4">
           <div>
             <div className="flex flex-col items-center mb-6">
               <img
@@ -99,9 +105,102 @@ const Analytics = ({ setIsDash }) => {
           </div>
         </aside>
 
+        <div
+          id="mobileMenu"
+          className={`fixed top-0 ${
+            isOpen ? "left-0" : "-left-full"
+          } w-3/5 h-full bg-white z-40 shadow-lg transition-all duration-300 lg:hidden`}
+        >
+          <ul className="flex flex-col p-6 gap-6 text-gray-600 uppercase mt-20">
+            <li>
+              <Link
+                to="/Dashboard/Analytics"
+                className="hover:text-fuchsia-600 pb-4"
+                onClick={handleClick}
+              >
+                <CircleArrowRight
+                  className="lg:hidden left-6"
+                  onClick={handleClick}
+                />
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/Dashboard"
+                className="hover:text-fuchsia-600"
+                onClick={handleClick}
+              >
+                DashBoard
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/Dashboard/History"
+                className="hover:text-fuchsia-600"
+                onClick={handleClick}
+              >
+                History
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/Dashboard/Maintenance"
+                className="hover:text-fuchsia-600"
+                onClick={handleClick}
+              >
+                Maintenance Schedule
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/Dashboard/Alerts"
+                className="hover:text-fuchsia-600"
+                onClick={handleClick}
+              >
+                Alerts
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/Dashboard/Analytics"
+                className="hover:text-fuchsia-600"
+                onClick={handleClick}
+              >
+                Analytics
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/Dashboard/User"
+                className="hover:text-fuchsia-600"
+                onClick={handleClick}
+              >
+                User
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/Dashboard/Setting"
+                className="hover:text-fuchsia-600"
+                onClick={handleClick}
+              >
+                Setting
+              </Link>
+            </li>
+          </ul>
+        </div>
+
         {/* Main Dashboard */}
         <main className="flex-1 p-6">
-          <h2 className="text-2xl font-bold text-[#1c2c7c] mb-6">Analytics</h2>
+          <div className="flex items-center mb-6 gap-3">
+            <CircleArrowRight
+              className="lg:hidden left-6"
+              onClick={handleClick}
+            />
+            <h2 className="text-2xl font-bold text-[#1c2c7c] ">
+              Analytics
+            </h2>
+          </div>
 
           {/* Top Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">

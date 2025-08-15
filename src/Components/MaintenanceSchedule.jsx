@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { UserContext } from "../Context/context.jsx";
 import { Link } from "react-router-dom";
 import userImage from "../assets/User.png";
@@ -15,6 +15,7 @@ import {
   FaExclamationTriangle,
   FaBars,
 } from "react-icons/fa";
+import { CircleArrowRight } from "lucide-react";
 
 const MaintenanceSchedule = ({ setIsDash }) => {
   const { user } = useContext(UserContext);
@@ -38,10 +39,15 @@ const MaintenanceSchedule = ({ setIsDash }) => {
     { title: "High Temperature warming", time: "1 day ago" },
   ];
 
+  const [isOpen, setIsOpen] = useState(false);
+  const handleClick = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <div className="flex h-screen bg-sky-50 font-sans">
       {/* Sidebar */}
-      <aside className="w-64 bg-sky-600 text-white flex flex-col justify-between p-4">
+      <aside className="hidden lg:flex w-64 bg-sky-600 text-white flex-col justify-between p-4">
         <div>
           <div className="flex flex-col items-center mb-6">
             <img
@@ -90,13 +96,104 @@ const MaintenanceSchedule = ({ setIsDash }) => {
         </div>
       </aside>
 
+      <div
+        id="mobileMenu"
+        className={`fixed top-0 ${
+          isOpen ? "left-0" : "-left-full"
+        } w-3/5 h-full bg-white z-40 shadow-lg transition-all duration-300 lg:hidden`}
+      >
+        <ul className="flex flex-col p-6 gap-6 text-gray-600 uppercase mt-20">
+          <li>
+            <Link
+              to="/Dashboard/Maintenance"
+              className="hover:text-fuchsia-600 pb-4"
+              onClick={handleClick}
+            >
+              <CircleArrowRight
+                className="lg:hidden left-6"
+                onClick={handleClick}
+              />
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/Dashboard"
+              className="hover:text-fuchsia-600"
+              onClick={handleClick}
+            >
+              DashBoard
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/Dashboard/History"
+              className="hover:text-fuchsia-600"
+              onClick={handleClick}
+            >
+              History
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/Dashboard/Maintenance"
+              className="hover:text-fuchsia-600"
+              onClick={handleClick}
+            >
+              Maintenance Schedule
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/Dashboard/Alerts"
+              className="hover:text-fuchsia-600"
+              onClick={handleClick}
+            >
+              Alerts
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/Dashboard/Analytics"
+              className="hover:text-fuchsia-600"
+              onClick={handleClick}
+            >
+              Analytics
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/Dashboard/User"
+              className="hover:text-fuchsia-600"
+              onClick={handleClick}
+            >
+              User
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/Dashboard/Setting"
+              className="hover:text-fuchsia-600"
+              onClick={handleClick}
+            >
+              Setting
+            </Link>
+          </li>
+        </ul>
+      </div>
+
       {/* Main */}
       <main className="flex-1 p-6 ">
         {/* Top Section */}
-        <div className="flex justify-between items-center mb-6">
-          <h1 className="text-3xl font-bold text-sky-800">
-            Maintenance Schedule
-          </h1>
+        <div className="block lg:flex justify-between items-center mb-6">
+          <div className="flex items-center gap-2">
+            <CircleArrowRight
+              className="lg:hidden left-6"
+              onClick={handleClick}
+            />
+            <h1 className="text-2xl font-bold text-sky-800 pb-2 lg:pb-0">
+              Maintenance Schedule
+            </h1>
+          </div>
           <div className="relative w-64">
             <input
               type="text"
@@ -108,7 +205,7 @@ const MaintenanceSchedule = ({ setIsDash }) => {
         </div>
 
         {/* Content Grid */}
-        <div className="grid grid-cols-3 gap-6">
+        <div className="block lg:grid grid-cols-3 gap-6">
           {/* Activity Chart (static) */}
           <div className="col-span-1 bg-white rounded-xl shadow p-4">
             <h2 className="text-lg font-semibold text-sky-700 mb-2">
@@ -126,7 +223,9 @@ const MaintenanceSchedule = ({ setIsDash }) => {
 
           {/* Today’s Tasks */}
           <div className="col-span-1">
-            <h2 className="text-lg font-bold text-sky-700 mb-2">Today</h2>
+            <h2 className="text-lg font-bold text-sky-700 mb-2 pt-2 lg:pt-0">
+              Today
+            </h2>
             <div className="space-y-4">
               {todayTasks.map((task, i) => (
                 <div
@@ -144,7 +243,7 @@ const MaintenanceSchedule = ({ setIsDash }) => {
           </div>
 
           {/* Calendar & Alerts */}
-          <div className="col-span-1 space-y-6">
+          <div className="col-span-1 space-y-6 pt-2 lg:pt-0">
             {/* Calendar */}
             <div className="bg-sky-100 rounded-xl p-4 shadow">
               <div className="flex items-center justify-between mb-2">
@@ -155,7 +254,7 @@ const MaintenanceSchedule = ({ setIsDash }) => {
             </div>
 
             {/* Alerts */}
-            <div className="space-y-3">
+            <div className="space-y-3 pt-2 lg:pt-0 pb-2 lg:pb-2">
               {notifications.map((note, i) => (
                 <div key={i} className="bg-white rounded-xl p-3 shadow text-sm">
                   <p className="font-semibold text-sky-700">{note.title}</p>
